@@ -621,15 +621,22 @@
   <div class="info-grid">
     <div class="info-item">
       <div class="lbl">日期</div>
-      <div class="val">待公告</div>
+      <div class="val">2026/04/18(六）</div>
     </div>
     <div class="info-item">
       <div class="lbl">時間</div>
-      <div class="val">待公告</div>
+      <div class="val">14:30-16:00</div>
     </div>
     <div class="info-item">
-      <div class="lbl">地點</div>
-      <div class="val">待公告</div>
+    <div class="lbl">地點</div>
+      <div class="val">彼得好咖啡(大巨蛋國館店)<br>大安區光復南路180巷9號</div>
+      <div style="margin-top:0.8rem;font-size:0.82rem;line-height:1.9;color:#7A6A52;">
+        🚇 捷運國父紀念館站 1號出口，步行約1分鐘<br>
+        🚗 附近停車場：<br>
+        &nbsp;&nbsp;・嘟嘟房停車場（光復南路280號）<br>
+        &nbsp;&nbsp;・僑安地下停車場（忠孝東路四段306號B1）<br>
+       <a href="https://www.google.com/maps/search/%E5%BD%BC%E5%BE%97%E5%A5%BD%E5%92%96%E5%95%A1+%E5%A4%A7%E5%B7%A8%E8%9B%8B%E5%9C%8B%E9%A4%A8%E5%BA%97/@25.0421152,121.556869,14z?entry=s&sa=X&ved=1t%3A199789" target="_blank" style="color:#B5451B;text-decoration:underline;">📍 Google 地圖導航</a>
+      </div>
     </div>
     <div class="info-item">
       <div class="lbl">費用</div>
@@ -658,17 +665,17 @@
     <div class="bank-info">
       <div class="bank-item">
         <span class="k">銀行</span>
-        <span class="v">請填入</span>
+        <span class="v">永豐銀行（806）</span>
       </div>
       <div class="bank-item">
         <span class="k">帳號</span>
-        <span class="v">請填入
+        <span class="v">125-018-00201645
           <button class="copy-btn" onclick="copyAccount()">複製</button>
         </span>
       </div>
       <div class="bank-item">
         <span class="k">戶名</span>
-        <span class="v">請填入</span>
+        <span class="v">漢薩文化創意有限公司</span>
       </div>
     </div>
 
@@ -762,7 +769,7 @@
 
   // ── copy account ──
   function copyAccount() {
-    navigator.clipboard.writeText('請填入帳號');
+    navigator.clipboard.writeText('125-018-00201645');
     const btn = document.querySelector('.copy-btn');
     btn.textContent = '已複製';
     setTimeout(() => btn.textContent = '複製', 2000);
