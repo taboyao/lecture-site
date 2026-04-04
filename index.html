@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>人生沒有標準答案｜講座報名</title>
+  <meta property="og:title" content="人生沒有標準答案，那群不聽話前輩的逃跑計劃">
+  <meta property="og:description" content="從披頭四、奧黛麗赫本到 1960 自由年代：看他們如何繞過規則，走出不一樣的生命軌跡。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Noto+Serif+TC:wght@300;400;500;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #F5F0E8;
+      --parchment: #EDE5D0;
+      --ink: #1A1208;
+      --brown: #5C3D1E;
+      --rust: #B5451B;
+      --gold: #C8962A;
+      --sage: #4A6741;
+      --muted: #7A6A52;
+      --border: #C4B49A;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Noto Serif TC', serif;
+      font-weight: 300;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    /* grain texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1.5rem;
+      position: relative;
+      border-bottom: 2px solid var(--ink);
+      background: var(--cream);
+    }
+
+    .hero-rule {
+      width: 100%;
+      max-width: 640px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+    .hero-rule::before, .hero-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .hero-rule span {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      color: var(--muted);
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    .hero-year {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(5rem, 18vw, 11rem);
+      font-weight: 900;
+      color: var(--parchment);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -52%);
+      user-select: none;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-tag {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      color: var(--rust);
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.1s ease forwards;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 5.5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s ease forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--rust);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.3s ease forwards;
+      line-height: 1.9;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s ease forwards;
+    }
+    .hero-meta-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.2rem;
+    }
+    .hero-meta-item .label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .hero-meta-item .value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--cream);
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      padding: 0.85rem 2.5rem;
+      text-decoration: none;
+      border: 2px solid var(--ink);
+      transition: all 0.25s;
+      cursor: pointer;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.5s ease forwards;
+    }
+    .cta-btn:hover {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      animation: bounce 2s infinite;
+      opacity: 0;
+      animation: fadeUp 1s 1s ease forwards, bounce 2s 2s infinite;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem;
+    }
+
+    .section-label {
+      font-family: 'IM Fell English', serif;
+      font-style: italic;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: var(--rust);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 2rem;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 3rem 0;
+    }
+    .divider::before, .divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+    .divider-ornament {
+      color: var(--gold);
+      font-size: 1.2rem;
+    }
+
+    .full-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0;
+    }
+
+    /* ── ABOUT ── */
+    .about-text {
+      font-size: 1.05rem;
+      line-height: 2;
+      color: var(--brown);
+    }
+    .about-text p + p { margin-top: 1.2rem; }
+    .about-text strong {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .pullquote {
+      border-left: 3px solid var(--rust);
+      padding: 1rem 1.5rem;
+      margin: 2.5rem 0;
+      background: var(--parchment);
+    }
+    .pullquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: var(--brown);
+    }
+
+    /* ── SPEAKERS ── */
+    .figure-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .figure-card {
+      border-top: 2px solid var(--ink);
+      padding-top: 1rem;
+    }
+    .figure-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .figure-era {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: var(--rust);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .figure-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ── INFO BOX ── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0;
+      border: 1px solid var(--border);
+      margin-top: 2rem;
+    }
+    .info-item {
+      padding: 1.4rem 1.5rem;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .info-item:last-child { border-right: none; }
+    .info-item .lbl {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .info-item .val {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    /* ── FORM ── */
+    .form-wrap {
+      background: var(--parchment);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .form-notice {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      padding: 1rem;
+      border: 1px dashed var(--border);
+      background: var(--cream);
+    }
+    .form-notice strong { color: var(--rust); }
+
+    .bank-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .bank-item {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      padding: 0.6rem 0.8rem;
+      font-size: 0.82rem;
+    }
+    .bank-item .k { color: var(--muted); font-size: 0.72rem; display: block; }
+    .bank-item .v { font-weight: 700; font-family: 'Playfair Display', serif; font-size: 0.95rem; }
+
+    .field-group { margin-bottom: 1.4rem; }
+    .field-group label {
+      display: block;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .field-group label .req { color: var(--rust); margin-left: 2px; }
+
+    .field-group input,
+    .field-group textarea {
+      width: 100%;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      padding: 0.75rem 1rem;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.92rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    .field-group input:focus,
+    .field-group textarea:focus { border-color: var(--ink); }
+    .field-group textarea { resize: vertical; min-height: 70px; }
+
+    .radio-grid {
+      display: grid;
+      gap: 0.5rem;
+    }
+    .radio-opt {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.7rem 1rem;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.15s;
+      font-size: 0.9rem;
+    }
+    .radio-opt:hover { border-color: var(--ink); }
+    .radio-opt input[type=radio] { accent-color: var(--rust); }
+    .radio-opt.selected {
+      border-color: var(--rust);
+      background: #FAF0E6;
+    }
+
+    .form-section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 1.8rem 0 0.8rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+
+    .error-msg {
+      color: var(--rust);
+      font-size: 0.82rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background: var(--ink);
+      color: var(--cream);
+      border: 2px solid var(--ink);
+      padding: 1rem;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 0.92rem;
+      letter-spacing: 0.15em;
+      cursor: pointer;
+      transition: all 0.25s;
+      margin-top: 0.5rem;
+    }
+    .submit-btn:hover { background: var(--rust); border-color: var(--rust); }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .success-box {
+      text-align: center;
+      padding: 3rem 1rem;
+      display: none;
+    }
+    .success-box .big-char {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem;
+      font-style: italic;
+      color: var(--rust);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .success-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .success-box p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      border-top: 2px solid var(--ink);
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 2;
+    }
+    footer .footer-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(6px); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* copy button */
+    .copy-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      cursor: pointer;
+      margin-left: 6px;
+      transition: all 0.15s;
+      vertical-align: middle;
+      font-family: 'Noto Serif TC', serif;
+    }
+    .copy-btn:hover { border-color: var(--ink); color: var(--ink); }
+
+    @media (max-width: 600px) {
+      .form-wrap { padding: 1.5rem; }
+      .hero-year { font-size: 30vw; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="hero-year">1960</div>
+  <div class="hero-content">
+    <div class="hero-rule">
+      <span>一場關於自由的講座</span>
+    </div>
+    <div class="hero-tag">講座報名 · 座位有限</div>
+    <h1 class="hero-title">
+      人生沒有標準答案，<br>
+      <em>那群不聽話前輩的逃跑計劃</em>
+    </h1>
+    <p class="hero-subtitle">
+      從披頭四、奧黛麗赫本到 1960 自由年代——<br>
+      看他們如何繞過規則，走出不一樣的生命軌跡。
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="label">日期</span>
+        <span class="value">TBD</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">地點</span>
+        <span class="value">TBD</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">名額</span>
+        <span class="value">限額報名</span>
+      </div>
+    </div>
+    <a href="#register" class="cta-btn">立即報名</a>
+  </div>
+  <div class="scroll-hint">↓ 繼續閱讀</div>
+</div>
+
+<hr class="full-divider">
+
+<!-- ── ABOUT ── -->
+<section class="reveal">
+  <div class="section-label">緣起 · About</div>
+  <h2 class="section-title">為什麼我們需要<br>「不聽話」的前輩？</h2>
+  <div class="about-text">
+    <p>在那個年代，他們都被說「不正常」。披頭四被唱片公司退稿，奧黛麗赫本被說顴骨太高不適合演戲，那一整個世代的年輕人被稱作「垮掉的一代」。</p>
+    <p>但他們沒有循規蹈矩。他們<strong>逃跑了</strong>——不是逃離責任，而是逃離別人替他們畫好的框。然後，他們創造了這個世界上一些最美好的東西。</p>
+    <p>這場講座，我們不談成功學，不談勵志。我們只是一起看看，當一個人決定「不這樣活」之後，會發生什麼事。</p>
+  </div>
+
+  <div class="pullquote">
+    <p>「規則是為了讓大多數人活得安全。<br>而少數人，需要的是一張地圖之外的地方。」</p>
+  </div>
+</section>
+
+<hr class="full-divider">
+
+<!-- ── FIGURES ── -->
+<section class="reveal">
+  <div class="section-label">講座人物 · Figures</div>
+  <h2 class="section-title">那些我們要談的人</h2>
+  <div class="figure-grid">
+    <div class="figure-card">
+      <div class="figure-name">The Beatles</div>
+      <div class="figure-era">1960s · 利物浦</div>
+      <p class="figure-desc">被 Decca Records 拒絕，被說「吉他樂團已經過時」，然後他們改變了整個音樂世界。</p>
+    </div>
+    <div class="figure-card">
+      <div class="figure-name">Audrey Hepburn</div>
+      <div class="figure-era">1950s · 荷蘭</div>
+      <p class="figure-desc">在一個推崇曲線的好萊塢年代，她用細長的身影重新定義了什麼叫做優雅。</p>
+    </div>
+    <div class="figure-card">
+      <div class="figure-name">自由年代</div>
+      <div class="figure-era">1960s · 全世界</div>
+      <p class="figure-desc">一整個世代決定不照父母的劇本走。他們的「任性」，後來變成了歷史。</p>
+    </div>
+  </div>
+</section>
+
+<hr class="full-divider">
+
+<!-- ── INFO ── -->
+<section class="reveal" id="info">
+  <div class="section-label">講座資訊 · Info</div>
+  <h2 class="section-title">活動詳情</h2>
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="lbl">日期</div>
+      <div class="val">待公告</div>
+    </div>
+    <div class="info-item">
+      <div class="lbl">時間</div>
+      <div class="val">待公告</div>
+    </div>
+    <div class="info-item">
+      <div class="lbl">地點</div>
+      <div class="val">待公告</div>
+    </div>
+    <div class="info-item">
+      <div class="lbl">費用</div>
+      <div class="val">含餐飲</div>
+    </div>
+  </div>
+  <p style="font-size:0.82rem;color:var(--muted);margin-top:1rem;">詳細資訊確認後將以 Email 通知已報名者。</p>
+</section>
+
+<hr class="full-divider">
+
+<!-- ── REGISTER ── -->
+<section id="register" class="reveal">
+  <div class="section-label">報名 · Register</div>
+  <h2 class="section-title">加入這場逃跑計劃</h2>
+
+  <div class="form-wrap">
+
+    <!-- 匯款資訊 -->
+    <div class="form-notice">
+      報名前請先完成匯款，再填寫下方表單，謝謝。<br>
+      <strong>匯款後請保留後五碼</strong>，填入表單以供核對。
+    </div>
+
+    <div class="form-section-title">匯款資訊</div>
+    <div class="bank-info">
+      <div class="bank-item">
+        <span class="k">銀行</span>
+        <span class="v">請填入</span>
+      </div>
+      <div class="bank-item">
+        <span class="k">帳號</span>
+        <span class="v">請填入
+          <button class="copy-btn" onclick="copyAccount()">複製</button>
+        </span>
+      </div>
+      <div class="bank-item">
+        <span class="k">戶名</span>
+        <span class="v">請填入</span>
+      </div>
+    </div>
+
+    <!-- 表單 -->
+    <div id="form-area">
+      <div class="form-section-title">基本資料</div>
+
+      <div class="form-row">
+        <div class="field-group">
+          <label>姓名 <span class="req">*</span></label>
+          <input type="text" id="f-name" placeholder="真實姓名">
+        </div>
+        <div class="field-group">
+          <label>匯款後五碼 <span class="req">*</span></label>
+          <input type="text" id="f-transfer" placeholder="例：12345" maxlength="5">
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>聯絡 Email <span class="req">*</span></label>
+        <input type="email" id="f-email" placeholder="example@mail.com">
+      </div>
+
+      <div class="field-group">
+        <label>聯絡電話 <span class="req">*</span></label>
+        <input type="tel" id="f-phone" placeholder="0912-345-678">
+      </div>
+
+      <div class="form-section-title">飲料選擇 <span class="req" style="font-size:0.8rem;color:var(--rust)">*</span></div>
+      <div class="radio-grid" id="drink-group">
+        <label class="radio-opt">
+          <input type="radio" name="drink" value="冰美式（L）"> 冰美式（L）
+        </label>
+        <label class="radio-opt">
+          <input type="radio" name="drink" value="熱美式（L）"> 熱美式（L）
+        </label>
+        <label class="radio-opt">
+          <input type="radio" name="drink" value="黑醋栗柳丁茶"> 黑醋栗柳丁茶
+        </label>
+      </div>
+
+      <div class="form-section-title">餐點選擇 <span class="req" style="font-size:0.8rem;color:var(--rust)">*</span></div>
+      <div class="radio-grid" id="meal-group">
+        <label class="radio-opt">
+          <input type="radio" name="meal" value="鮮蔬三明治"> 鮮蔬三明治
+        </label>
+        <label class="radio-opt">
+          <input type="radio" name="meal" value="火腿三明治"> 火腿三明治
+        </label>
+      </div>
+
+      <div class="form-section-title">收據資訊</div>
+      <div class="field-group">
+        <label>收據抬頭（留空則以報名姓名開立）</label>
+        <input type="text" id="f-receipt" placeholder="如需另開請填寫">
+      </div>
+
+      <div class="field-group">
+        <label>備註</label>
+        <textarea id="f-note" placeholder="其他需要告知的事項..."></textarea>
+      </div>
+
+      <div class="error-msg" id="form-error"></div>
+      <button class="submit-btn" onclick="submitForm()" id="submit-btn">確認報名 →</button>
+    </div>
+
+    <div class="success-box" id="success-box">
+      <div class="big-char">✦</div>
+      <h3>報名成功，感謝你！</h3>
+      <p id="success-detail"></p>
+      <p style="margin-top:0.8rem;">我們將會寄送確認信到你的 Email，<br>如有任何問題歡迎來信聯繫。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-title">人生沒有標準答案，那群不聽話前輩的逃跑計劃</div>
+  <div>從披頭四、奧黛麗赫本到 1960 自由年代</div>
+  <div style="margin-top:1rem;font-size:0.72rem;opacity:0.6;">© 2025 · 保留所有權利</div>
+</footer>
+
+<script>
+  // ── radio highlight ──
+  document.querySelectorAll('.radio-opt input[type=radio]').forEach(r => {
+    r.addEventListener('change', function() {
+      this.closest('.radio-grid').querySelectorAll('.radio-opt').forEach(o => o.classList.remove('selected'));
+      this.closest('.radio-opt').classList.add('selected');
+    });
+  });
+
+  // ── copy account ──
+  function copyAccount() {
+    navigator.clipboard.writeText('請填入帳號');
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '已複製';
+    setTimeout(() => btn.textContent = '複製', 2000);
+  }
+
+  // ── scroll reveal ──
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── form submit → Google Sheets ──
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzaVz8A8VlT6vmxey7pXBGN0SLcQk4LcR8j9wRNx4sLU-rLhDsdNiS_Rr7x66uN0FNimg/exec';
+
+  async function submitForm() {
+    const name     = document.getElementById('f-name').value.trim();
+    const email    = document.getElementById('f-email').value.trim();
+    const phone    = document.getElementById('f-phone').value.trim();
+    const transfer = document.getElementById('f-transfer').value.trim();
+    const drink    = document.querySelector('input[name=drink]:checked');
+    const meal     = document.querySelector('input[name=meal]:checked');
+    const receipt  = document.getElementById('f-receipt').value.trim();
+    const note     = document.getElementById('f-note').value.trim();
+    const errEl    = document.getElementById('form-error');
+
+    if (!name || !email || !phone || !transfer) {
+      errEl.textContent = '請填寫所有必填欄位（姓名、Email、電話、匯款後五碼）。';
+      errEl.style.display = 'block'; return;
+    }
+    if (!/^\d{5}$/.test(transfer)) {
+      errEl.textContent = '匯款後五碼請填入 5 位數字。';
+      errEl.style.display = 'block'; return;
+    }
+    if (!drink) { errEl.textContent = '請選擇飲料。'; errEl.style.display = 'block'; return; }
+    if (!meal)  { errEl.textContent = '請選擇餐點。'; errEl.style.display = 'block'; return; }
+    errEl.style.display = 'none';
+
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = '提交中…';
+
+    const payload = {
+      name, email, phone, transfer,
+      drink: drink.value,
+      meal: meal.value,
+      receipt: receipt || name,
+      note,
+      timestamp: new Date().toLocaleString('zh-TW')
+    };
+
+    try {
+      await fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      document.getElementById('form-area').style.display = 'none';
+      const box = document.getElementById('success-box');
+      box.style.display = 'block';
+      document.getElementById('success-detail').textContent =
+        `${name}，飲料：${drink.value}，餐點：${meal.value}，收據抬頭：${receipt || name}`;
+    } catch(e) {
+      btn.disabled = false;
+      btn.textContent = '確認報名 →';
+      errEl.textContent = '提交失敗，請稍後再試或直接聯繫主辦方。';
+      errEl.style.display = 'block';
+    }
+  }
+</script>
+</body>
+</html>
